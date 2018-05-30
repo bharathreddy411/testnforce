@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	function getfolders(){
+		$.ajax({
+			url: "/getfolders"
+		}).done(function( data ) {
+			console.log(data);
+		});
+	}
+	getfolders();
+	
+	function getdashboards(){
+		$.ajax({
+			url: "/getdashboards"
+		}).done(function( data ) {
+			console.log(data);
+		});
+	}
+	getdashboards();
+	
+	function getnamespace(){
+		$.ajax({
+			url: "/getnamespace"
+		}).done(function( data ) {
+			console.log(data);
+		});
+	}
+	getnamespace();
+});
+</script>
+</head>
+<body>
+</body>
+</html>
