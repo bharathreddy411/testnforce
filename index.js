@@ -14,7 +14,7 @@ function oauthCallbackUrl(req) {
 var org = nforce.createConnection({
   clientId: '3MVG9d8..z.hDcPIb2fqh30hpJyk.RNUR9i04wYTSzQ2Bf3eHaL2rBpvRX83shIHMLtCj6y1FwxxvN5qDC5HI', //process.env.CONSUMER_KEY,
   clientSecret: '6104269296384969470',//process.env.CONSUMER_SECRET,
-  redirectUri: 'http://localhost:5000',//oauthCallbackUrl(req),
+  redirectUri: 'https://qikforce.herokuapp.com',//'http://localhost:5000',//oauthCallbackUrl(req),
   mode: 'single'
 });
 
