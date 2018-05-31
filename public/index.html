@@ -1,38 +1,233 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-	function getfolders(){
-		$.ajax({
-			url: "/getfolders"
-		}).done(function( data ) {
-			console.log(data);
-		});
-	}
-	getfolders();
-	
-	function getdashboards(){
-		$.ajax({
-			url: "/getdashboards"
-		}).done(function( data ) {
-			console.log(data);
-		});
-	}
-	getdashboards();
-	
-	function getnamespace(){
-		$.ajax({
-			url: "/getnamespace"
-		}).done(function( data ) {
-			console.log(data);
-		});
-	}
-	getnamespace();
-});
-</script>
+	<meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Touch Dashboards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <link rel="stylesheet" type="text/css" href="assets/EdgeClient.css">
+    <link rel="stylesheet" type="text/css" href="assets/salesforce/styles/salesforce-lightning-design-system-vf.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body class="slds-scope">
+	<div class="slds" style="border: 1px solid lightgrey;width:95%;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;height:calc(100% - 44px);">
+		<div class="myapp slds-no-flex" style="background-color: white;height:100%">
+			<div class="slds-page-header" style="border-bottom: 1px solid #d8dde6;background:none;padding: 11px 11px 12px;">
+                <div class="slds-grid">
+                    <div class="slds-col slds-has-flexi-truncate slds-align-middle">
+                        <!--<span id="back" style="cursor:pointer;float: left;padding-right:20px;display:none"><i class="fa fa-chevron-left" aria-hidden="true"></i></span>-->
+                        <span id="back" style="cursor:pointer;float: left;padding-right:20px;display:none">
+                            <img style="cursor:pointer;" src="assets/salesforce/icons/utility/chevronleft_60.png" width="18px" height="10px" />
+                        </span>
+                        <div class="slds-select_container" style="width:50%;display:inline-block" id="selectedSourceContainer">
+                            <select class="slds-select" id="selectedSource">
+                                <option value="salesforce">SalesForce.org</option>
+                                <option value="github">Github</option>
+                                <option value="savedConfig">Load Saved SF configuration</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-has-flexi-truncate slds-align-middle" style="text-align:center">
+                        <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title="Touch Dashboards">
+                            <span style="color:#41C1BC" class="slds-align-middle">Touch</span>
+                            <span style="color:#ED5D22" class="slds-align-middle"> Dashboards</span>
+                        </h1>
+                    </div>
+                    <div class="slds-col slds-has-flexi-truncate slds-align-middle">
+                        <button class="slds-button slds-button--neutral" id="next" style="background: white;color: rgb(77, 77, 77);font-weight:bold;margin-left:10px;float:right">
+                            Next
+                        </button>
+                        <button class="slds-button slds-button--neutral" id="clone" style="background: white;color: rgb(77, 77, 77);;font-weight:bold;margin-left:10px;float:right;display:none;">
+                            Clone
+                        </button>
+                        <button class="slds-button slds-button--neutral" id="commit" style="background: white;color: rgb(77, 77, 77);;font-weight:bold;margin-left:10px;float:right;display:none;">
+                            Commit
+                        </button>
+                        <button class="slds-button slds-button--neutral" id="download" style="background: white;color: rgb(77, 77, 77);;font-weight:bold;margin-left:10px;float:right;display:none;">
+                            Download
+                        </button>
+                        <div class="slds-select_container" style="width:50%;display:none;float:right" id="destSourceContainer">
+                            <select class="slds-select" id="destSource">
+                                <option value="salesforce">SalesForce.org</option>
+                                <option value="github">Github</option>
+                                <option value="githubTemplatize">Templatize to Github</option>
+                                <option value="download">Download</option>
+                                <option value="downloadTemplatize">Templatize to Download</option>
+                                <option value="anothersalesforceorg">Another Salesforce Org</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div class="slds-col slds-no-flex page1" id="page1" style="height:calc(100% - 60px)">
+                <div class="slds-grid slds-m-top--large" id="salesforce" style="margin-top:0px;height:100%;padding-top:10px;padding-bottom:6px">
+                    <!--SF Applications list  slds-size--2-of-6 box-sizing:initial;-->
+                    <div class="slds-col slds-p-horizontal_medium slds-size_1-of-3 sfAppsList" style="height:100%;">
+                        <div class="slds-card" style="background:white;border-bottom: 1px solid #d8dde6;height:100%">
+                            <section class="slds-card__body" style="height:300px;padding:0px;margin:0;height:100%">
+                                <div class="slds-scrollable" style="height:100%">
+                                    <div class="search dimsearch">
+                                        <input class="myInput" placeholder="Search..." type="text" />
+                                        <span class="searchhint resnum"></span>
+                                    </div>
+                                    <div class="names selectors" style="height:calc(100% - 37px);">
+                                        <div class="listheader squeezed"></div>
+                                        <div class="listheader">Applications</div>
+                                        <div id="sfAppsList">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <!--SF Dashboards list slds-size--2-of-6 box-sizing:initial;-->
+                    <div class="slds-col slds-p-horizontal_medium slds-size_1-of-3 sfDashboardsList" style="height:100%;">
+                        <div class="slds-card" style="background:white;border-bottom: 1px solid #d8dde6;height:100%">
+                            <section class="slds-card__body" style="height:300px;padding:0px;margin:0;height:100%">
+                                <div class="slds-scrollable" style="height:100%">
+                                    <div class="search dimsearch">
+                                        <input class="myInput" placeholder="Search..." type="text" />
+                                        <span class="searchhint resnum"></span>
+                                    </div>
+                                    <div class="names selectors" style="height:calc(100% - 37px);">
+                                        <div class="listheader squeezed"></div>
+                                        <div class="listheader">Dashboards
+                                            <div style='float:right;margin-top:-1px'>
+                                                <button class="slds-button slds-button--neutral" id="sfSelectAllDashboards" style="height: 20px;line-height: 0;padding: 0 7px 0 7px;background: white;color: rgb(77, 77, 77);">
+                                                    Select All
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div id="sfDashboardsList">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <!--SF Selected Dashboards list slds-size--2-of-6 box-sizing:initial;-->
+                    <div class="slds-col slds-p-horizontal_medium slds-size_1-of-3 sfSelectedDashboardsList" style="height:100%;">
+                        <div class="slds-card" style="background:white;border-bottom: 1px solid #d8dde6;height:100%">
+                            <section class="slds-card__body" style="height:300px;padding:0px;margin:0;height:100%">
+                                <div class="slds-scrollable" style="height:100%">
+                                    <div class="search dimsearch">
+                                        <input class="myInput" placeholder="Search..." type="text" />
+                                        <span class="searchhint resnum"></span>
+                                    </div>
+                                    <div class="names selectors" style="height:calc(100% - 37px);">
+                                        <div class="listheader squeezed"></div>
+                                        <div class="listheader">Selected Dashboards
+                                            <div style='float:right;margin-top:-1px'>
+                                                <button class="slds-button slds-button--neutral" id="sfDeSelectAllDashboards" style="height: 20px;line-height: 0;padding: 0 7px 0 7px;background: white;color: rgb(77, 77, 77);">
+                                                    DeSelect All
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div id="sfSelectedDashboardsList">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <div id="github" style="display:none;margin-top:0px;height:100%;padding-top:10px;padding-bottom:6px">
+                    <nav role="navigation" aria-label="Breadcrumbs" style="width: fit-content;margin:0px auto 2px auto;">
+                        <ol class="slds-breadcrumb slds-list_horizontal slds-wrap" id="gitNav">
+                        </ol>
+                    </nav>
+                    <div class="slds-grid slds-m-top--large" id="github" style="margin-top:0px;height:calc(100% - 15px);padding-top:10px;padding-bottom:6px">
+                        <!--gitReposList-->
+                        <div class="slds-col slds-p-horizontal_medium slds-size--2-of-6 gitReposList" style="height:100%;box-sizing:initial;">
+                            <div class="slds-card" style="background:white;border-bottom: 1px solid #d8dde6;height:100%">
+                                <section class="slds-card__body" style="height:300px;padding:0px;margin:0;height:100%">
+                                    <div class="slds-scrollable" style="height:100%">
+                                        <div class="search dimsearch">
+                                            <input class="myInput" placeholder="Search..." type="text" />
+                                            <span class="searchhint resnum"></span>
+                                        </div>
+                                        <div class="names selectors" style="height:calc(100% - 37px);">
+                                            <div class="listheader squeezed"></div>
+                                            <div class="listheader">Applications</div>
+                                            <div id="gitReposList">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <!--gitRepoFilesList-->
+                        <div class="slds-col slds-p-horizontal_medium slds-size--2-of-6 gitRepoFilesList" style="height:100%;box-sizing:initial;">
+                            <div class="slds-card" style="background:white;border-bottom: 1px solid #d8dde6;height:100%">
+                                <section class="slds-card__body" style="height:300px;padding:0px;margin:0;height:100%">
+                                    <div class="slds-scrollable" style="height:100%">
+                                        <div class="search dimsearch">
+                                            <input class="myInput" placeholder="Search..." type="text" />
+                                            <span class="searchhint resnum"></span>
+                                        </div>
+                                        <div class="names selectors" style="height:calc(100% - 37px);">
+                                            <div class="listheader squeezed"></div>
+                                            <div class="listheader">Files/Folders</div>
+                                            <div id="gitRepoFilesList">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <!--gitSelectedDashboardsList-->
+                        <div class="slds-col slds-p-horizontal_medium slds-size--2-of-6 gitSelectedDashboardsList" style="height:100%;box-sizing:initial;">
+                            <div class="slds-card" style="background:white;border-bottom: 1px solid #d8dde6;height:100%">
+                                <section class="slds-card__body" style="height:300px;padding:0px;margin:0;height:100%">
+                                    <div class="slds-scrollable" style="height:100%">
+                                        <div class="search dimsearch">
+                                            <input class="myInput" placeholder="Search..." type="text" />
+                                            <span class="searchhint resnum"></span>
+                                        </div>
+                                        <div class="names selectors" style="height:calc(100% - 37px);">
+                                            <div class="listheader squeezed"></div>
+                                            <div class="listheader">Selected Dashboards
+                                                <div style='float:right;margin-top:-1px'>
+                                                    <button class="slds-button slds-button--neutral" id="gitDeSelectAllDashboards" style="height: 20px;line-height: 0;padding: 0 7px 0 7px;background: white;color: rgb(77, 77, 77);">
+                                                        DeSelect All
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div id="gitSelectedDashboardsList">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+	            <div id="loader" style="display:none">
+                <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 10000; background-color: black;"></div>
+                <center>
+                    <div style="position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 10000; margin: 15% 50%">
+                        <div style="display: inline-block; padding: 2px; background-color: #fff; width: 150px;">
+                            <img src="images/analyticscc__TA_Label.png" style="float: left; margin: 8px;" width="20%" height="10%" />
+                            <span style="display: inline-block; padding: 10px 0px;">Please Wait...</span>
+                        </div>
+                    </div>
+                </center>
+            </div>
+		</div>
+	</div>
+	<script src="assets/jquery-1.12.4.min.js"></script>
+    <script src="assets/jszip.min.js"></script>
+    <script src="assets/FileSaver.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

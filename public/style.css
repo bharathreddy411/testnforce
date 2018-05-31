@@ -1,0 +1,577 @@
+.search .myInput {
+    background-image: url('images/analyticscc__SearchIcon.png');
+    background-repeat: no-repeat;
+    font-size: 16px;
+    padding: 15px 15px 20px 50px;
+    border: 1px solid #ddd;
+}
+.slds ::selection {
+    background: #015ba7 !important;
+    color: white !important;
+    text-shadow: none;
+}
+.managebutton {
+    border: 1.35px solid lightgrey;
+}
+.managebutton:hover{
+    border: 1.35px solid #2EC2BA;
+}
+@media only screen and (max-width: 830px) {
+    .NewSldscard{
+        min-width:160px 
+   }
+}
+@media only screen and (min-width: 831px) {
+    .NewSldscard{
+        min-width:180px 
+   }
+}
+@media only screen and (min-width: 900px) {
+    .NewSldscard{
+        min-width:220px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 270px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 220px;
+   }
+    .liclasses:hover{
+        background: white;
+        overflow: visible;
+        padding-left: 40px;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 220px;
+   }
+    #paddingIds{
+        width: 222px;
+   }
+}
+@media only screen and (min-width: 1000px) {
+    .NewSldscard{
+        min-width:240px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 213px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 231px;
+   }
+    .liclasses:hover{
+        background: white;
+        overflow: visible;
+        padding-left: 40px;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 231px;
+   }
+    #paddingIds{
+        width: 234px;
+   }
+}
+@media only screen and (min-width: 1100px) {
+    .NewSldscard{
+        min-width:235px;
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 241px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 241px;
+   }
+    .liclasses:hover{
+        background: white;
+        overflow: visible;
+        padding-left: 40px;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 241px;
+   }
+    #paddingIds{
+        min-width: 244px;
+   }
+}
+@media only screen and (min-width: 1150px) {
+    .NewSldscard{
+        min-width:246px;
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 248px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 253px;
+   }
+    .liclasses:hover{
+        background: white;
+        overflow: visible;
+        padding-left: 40px;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 253px;
+   }
+    #paddingIds{
+        width: 256px;
+   }
+}
+@media only screen and (min-width: 1200px) {
+    .NewSldscard{
+        min-width:260px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 268px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 268px;
+   }
+    .liclasses:hover{
+        background: white;
+        overflow: visible;
+        padding-left: 40px;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 268px;
+   }
+    #paddingIds{
+        width: 271px;
+   }
+}
+@media only screen and (min-width: 1250px) {
+    .NewSldscard{
+        min-width:275px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 281px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 281px;
+   }
+    .liclasses:hover{
+        background: white;
+        padding-left: 40px;
+        overflow: visible;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 281px;
+   }
+    #paddingIds{
+        width: 284px;
+   }
+}
+@media only screen and (min-width: 1300px) {
+    .NewSldscard{
+        min-width:284px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 278px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 293px;
+   }
+    .liclasses:hover{
+        background: white;
+        padding-left: 40px;
+        overflow: visible;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 293px;
+   }
+    #paddingIds{
+        width: 296px;
+   }
+}
+@media only screen and (min-width: 1350px) {
+    .NewSldscard{
+        min-width:299px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 309px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 309px;
+   }
+    .liclasses:hover{
+        background: white;
+        padding-left: 40px;
+        overflow: visible;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 309px;
+   }
+    #paddingIds{
+        width: 312px;
+   }
+}
+@media only screen and (min-width: 1400px) {
+    .NewSldscard{
+        min-width:315px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 323px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 320px;
+   }
+    .liclasses:hover{
+        background: white;
+        padding-left: 40px;
+        overflow: visible;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 320px;
+   }
+    #paddingIds{
+        width: 323px;
+   }
+}
+@media only screen and (min-width: 1450px) {
+    .NewSldscard{
+        min-width:340px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        margin-top: 0px;
+        position: absolute;
+        height: 26px;
+        background: white;
+        overflow: hidden;
+        max-width: 323px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 323px;
+   }
+    .liclasses:hover{
+        background: white;
+        overflow: visible;
+        padding-left: 40px;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 323px;
+   }
+    #paddingIds{
+        width: 326px;
+   }
+}
+@media only screen and (min-width: 1500px) {
+    .NewSldscard{
+        min-width:343px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 333px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 333px;
+   }
+    .liclasses:hover{
+        background: white;
+        padding-left: 40px;
+        overflow: visible;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 333px;
+   }
+    #paddingIds{
+        width: 337px;
+   }
+}
+@media only screen and (min-width: 1550px) {
+    .NewSldscard{
+        min-width:341px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 340px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 352px;
+   }
+    .liclasses:hover{
+        background: white;
+        padding-left: 40px;
+        overflow: visible;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 352px;
+   }
+    #paddingIds{
+        width: 355px;
+   }
+}
+@media only screen and (min-width: 1600px) {
+    .NewSldscard{
+        min-width:370px 
+   }
+    .liclasses{
+        cursor: pointer;
+        float: left;
+        padding-left: 0px;
+        position: absolute;
+        height: 26px;
+        margin-top: 0px;
+        background: white;
+        overflow: hidden;
+        max-width: 346px;
+        text-overflow:ellipsis;
+        text-align: center;
+        min-width: 365px;
+   }
+    .liclasses:hover{
+        background: white;
+        padding-left: 40px;
+        overflow: visible;
+        max-width: max-content;
+        background:#2EC2BA !important;
+        text-align: center;
+        min-width: 365px;
+   }
+    #paddingIds{
+        width: 368px;
+   }
+}
+.textover{
+    overflow-x: scroll;
+   ;
+}
+body #AppBodyHeader {
+    background-image: none;
+    font-size: 12px 
+}
+.slds .slds-tabs--default__item + .slds-tabs--default__item {
+    margin-left: 0px;
+}
+.slds .slds-tabs--default__link {
+    padding: 0 0px;
+}
+.slds .slds-col--padded {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.slds .slds-tabs--default__link{
+    background-color: whitesmoke;
+    text-align: center;
+    Width: 100%;
+}
+.slds .slds-tabs--default__item.slds-active .slds-tabs--default__link {
+    border-color:none;
+    background-color:grey;
+    color:#FFF;
+    border-bottom:0px;
+}
+.spinner{
+    display: block;
+    width:100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    text-align:center;
+    padding:200px;
+    font:normal 16px Tahoma, Geneva, sans-serif;
+    z-index:1;
+    overflow: auto;
+    border:1px solid #CCC;
+    background-color:gray;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    -moz-opacity:0.6;
+    -khtml-opacity:0.6;
+    z-index:100;
+    line-height:20px;
+}
+#opaque {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none;
+    background-color: gray;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    -moz-opacity:0.6;
+    -khtml-opacity:0.6 
+}
+* html #opaque {
+    position: absolute;
+}
+.tabyes{
+    display:block;
+}
+.tabno{
+    display:none 
+}
+.slds-grid slds-m-top--large{
+    margin-top:0px;
+}
+.buttonbar.dark .btn, .btn.dark {
+    background: #585858;
+    color: rgba(255,255,255,.95);
+    border: 0px;
+}
+.btn.main {
+    margin: 0;
+    color: #fff;
+    background-color: #44a2f5;
+    background: #44a2f5;
+}
+body .bPageFooter a, body .bPageFooter {
+    border: none;
+    color: #fff;
+    font-size:12px;
+}
+.NewclassAdd{
+    margin-top: 60px !important;
+    margin-left: 40px !important;
+    padding: 0px 15px 6px 15px !important;
+    font-size: 32px !important;
+    line-height: 25px !important;
+    background: lightgrey !important;
+    color: black !important;
+}
+.NewclassRem{
+    margin-top: 10px !important;
+    margin-left: 40px !important;
+    padding: 0px 15px 6px 15px !important;
+    font-size: 32px !important;
+    line-height: 25px !important;
+    background: lightgrey !important;
+    color: black !important;
+}
+
+
+
+
+
+
+.selected{
+   background-color: #f2f6fa !important;
+   text-shadow: none;
+   color: #16325c;
+}
+.names a label{
+   overflow:hidden !important;
+   text-overflow:ellipsis
+}
+.accordionicon_inverse{
+   transform: rotate(-90deg);
+}
+.names a label {
+    width: 0;
+}
+body {
+   background: #FFF
+}
+.slds-page-header {
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+}
+.slds-card {
+    box-shadow: none;
+}
+.slds-page-header__title {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
