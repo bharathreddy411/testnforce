@@ -205,4 +205,15 @@ $(document).ready(function(){
 		});
 	}
 	getnamespace();
+	
+	$('#button').on('click', function(){
+		$.ajax({
+			url: "/anotherorg"
+		}).done(function( data ) {
+			console.log(data);
+		}).fail(function(err){
+			console.log(err)
+		});
+	});
+	
 });

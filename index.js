@@ -19,8 +19,8 @@ function oauthCallbackUrl(req) {
 var org = nforce.createConnection({
   clientId: '3MVG9d8..z.hDcPIb2fqh30hpJyk.RNUR9i04wYTSzQ2Bf3eHaL2rBpvRX83shIHMLtCj6y1FwxxvN5qDC5HI', //process.env.CONSUMER_KEY,
   clientSecret: '6104269296384969470',//process.env.CONSUMER_SECRET,
-  redirectUri: 'http://localhost:5000',//'https://qikforce.herokuapp.com',//oauthCallbackUrl(req),
-  mode: 'single'
+  redirectUri: 'https://qikforce.herokuapp.com',//'http://localhost:5000',//oauthCallbackUrl(req),
+  mode: 'multi'
 });
 
 var oauth;
@@ -50,8 +50,23 @@ app.get('/', function(req, res){
     }
 });
 
+var username      = 'bharathreddy848@gmail.com',
+    password      = 'Bharath1234',
+    securityToken = 'o58k2jamXr0klzwKoMb1Uj7N',
+    oauth2;
+app.get('/anotherorg',function(req,res){
+	org.authenticate({ username: username, password: password, securityToken: securityToken }, function(err, resp){
+	  if(!err) {
+		oauth2 = resp;
+		res.send(resp);
+	  } else {
+		res.send(err);
+	  }
+	});
+});
+
 app.get('/getnamespace', function(req,res){
-	org.getUrl('/services/data/v42.0/query/?q=SELECT+NamespacePrefix+FROM+Organization',function(err,response){
+	org.getUrl({url:'/services/data/v42.0/query/?q=SELECT+NamespacePrefix+FROM+Organization',oauth:oauth},function(err,response){
 		if(err){
 			res.send(err);
 		}else{
@@ -61,7 +76,7 @@ app.get('/getnamespace', function(req,res){
 });
 
 app.get('/getfolders',function(req,res){
-	org.getUrl('/services/data/v42.0/wave/folders',function(err,response){
+	org.getUrl({url:'/services/data/v42.0/wave/folders',oauth:oauth},function(err,response){
 		if(err){
 			res.send(err);
 		}else{
@@ -81,7 +96,7 @@ app.get('/getfolders',function(req,res){
 });*/
 
 app.post('/getdashboards', function(req,res){
-	org.getUrl(req.body.url,function(err,response){
+	org.getUrl({url:req.body.url,oauth:oauth},function(err,response){
 		if(err){
 			res.send(err);
 		}else{
