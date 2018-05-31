@@ -7,14 +7,16 @@ var app = express();
 app.enable('trust proxy');
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 // parse application/json
 app.use(bodyParser.json());
 
-function oauthCallbackUrl(req) {
+/*function oauthCallbackUrl(req) {
     return req.protocol + '://' + req.get('host');
-}
+}*/
 
 var org = nforce.createConnection({
     clientId: '3MVG9d8..z.hDcPIb2fqh30hpJyk.RNUR9i04wYTSzQ2Bf3eHaL2rBpvRX83shIHMLtCj6y1FwxxvN5qDC5HI', //process.env.CONSUMER_KEY,
@@ -32,13 +34,12 @@ app.get('/', function (req, res) {
             if (!err) {
                 oauth = auth;
                 //res.redirect('/index');
-                //res.json(auth);		
+                //res.json(auth);
                 res.sendFile(path.join(__dirname + '/public/index.html'));
             } else {
                 if (err.message.indexOf('invalid_grant') >= 0) {
                     res.redirect('/');
-                }
-                else {
+                } else {
                     res.send(err.message);
                 }
             }
@@ -53,7 +54,11 @@ var username = 'bharathreddy848@gmail.com',
     securityToken = 'o58k2jamXr0klzwKoMb1Uj7N',
     oauth2;
 app.get('/anotherorg', function (req, res) {
-    org.authenticate({ username: username, password: password, securityToken: securityToken }, function (err, resp) {
+    org.authenticate({
+        username: username,
+        password: password,
+        securityToken: securityToken
+    }, function (err, resp) {
         if (!err) {
             oauth2 = resp;
             res.send(resp);
@@ -64,7 +69,10 @@ app.get('/anotherorg', function (req, res) {
 });
 
 app.get('/getnamespace', function (req, res) {
-    org.getUrl({ url: '/services/data/v42.0/query/?q=SELECT+NamespacePrefix+FROM+Organization', oauth: oauth }, function (err, response) {
+    org.getUrl({
+        url: '/services/data/v42.0/query/?q=SELECT+NamespacePrefix+FROM+Organization',
+        oauth: oauth
+    }, function (err, response) {
         if (err) {
             res.send(err);
         } else {
@@ -74,7 +82,10 @@ app.get('/getnamespace', function (req, res) {
 });
 
 app.get('/getfolders', function (req, res) {
-    org.getUrl({ url: '/services/data/v42.0/wave/folders', oauth: oauth }, function (err, response) {
+    org.getUrl({
+        url: '/services/data/v42.0/wave/folders',
+        oauth: oauth
+    }, function (err, response) {
         if (err) {
             res.send(err);
         } else {
@@ -94,7 +105,10 @@ app.get('/getfolders', function (req, res) {
 });*/
 
 app.post('/getdashboards', function (req, res) {
-    org.getUrl({ url: req.body.url, oauth: oauth }, function (err, response) {
+    org.getUrl({
+        url: req.body.url,
+        oauth: oauth
+    }, function (err, response) {
         if (err) {
             res.send(err);
         } else {
