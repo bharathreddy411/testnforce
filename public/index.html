@@ -226,6 +226,121 @@
                     </div>
                 </center>
             </div>
+
+            <div class="slds-modal" aria-hidden="false" role="dialog" id="gitLoginModal">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">Github Login</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <form name="gitHubLoginForm" id="gitHubLoginForm">
+                            <div class="errorMessages" style="text-align:center;color:#c23934"></div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="gitUserName">UserName
+                                    <span class="slds-required" title="required">*</span>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input id="username" class="slds-input" type="text" placeholder="Username" required="required" />
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="gitPassword">Password
+                                    <span class="slds-required" title="required">*</span>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input id="password" class="slds-input" type="password" placeholder="Password" required="required" />
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="gitDomain">Domain
+                                    <span class="slds-required" title="required">*</span>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input id="domain" class="slds-input" type="text" placeholder="Domain" required="required" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" id="closeGitLoginModal">Cancel</button>
+                        <button class="slds-button slds-button--neutral slds-button--brand" id="loginToGithub">Go</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-modal" aria-hidden="false" role="dialog" id="showRepoCommitsModal">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">Select Commit</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <form name="showRepoCommitsModalForm" id="showRepoCommitsModalForm">
+                            <div class="errorMessages" style="text-align:center;color:#c23934"></div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="select-01">Select</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <select class="slds-select" id="selectCommitdd">
+                                            <!--<option value="">Please select</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" id="closeShowRepoCommitsModal">Cancel</button>
+                        <button class="slds-button slds-button--neutral slds-button--brand" id="showRepoCommitsBtn">Select</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-modal" aria-hidden="false" role="dialog" id="showRepoBranchesModal">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">Select Branch</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <form name="showRepoBranchesModalForm" id="showRepoBranchesModalForm">
+                            <div class="errorMessages" style="text-align:center;color:#c23934"></div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="select-01">Select</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <select class="slds-select" id="selectBranchdd">
+                                            <!--<option value="">Please select</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" id="closeShowRepoBranchesModal">Cancel</button>
+                        <button class="slds-button slds-button--neutral slds-button--brand" id="showRepoBranchesBtn">Select</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorpopup" style="display:none">
+                <section role="alertdialog" tabindex="-1" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt"
+                    aria-modal="true">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header slds-theme_error slds-theme_alert-texture">
+                            <h2 class="slds-text-heading_medium" id="prompt-heading-id" style="color:#ffffff">Error</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="prompt-message-wrapper" style="max-height:100px;overflow:auto;">
+                            <p id="errormessage" style="text-align:center;font-weight:bold;text-transform: capitalize;"></p>
+                        </div>
+                        <footer class="slds-modal__footer slds-theme_default">
+                            <button class="slds-button slds-button_neutral" id="errorpopupclose">Okay</button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+
+            <div class="slds-backdrop" id="backdrop"></div>
         </div>
     </div>
     <script src="assets/jquery-1.12.4.min.js"></script>

@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 var org = nforce.createConnection({
     clientId: '3MVG9d8..z.hDcPIb2fqh30hpJyk.RNUR9i04wYTSzQ2Bf3eHaL2rBpvRX83shIHMLtCj6y1FwxxvN5qDC5HI', //process.env.CONSUMER_KEY,
     clientSecret: '6104269296384969470',//process.env.CONSUMER_SECRET,
-    redirectUri: 'https://qikforce.herokuapp.com',//'http://localhost:5000',//oauthCallbackUrl(req),
+    redirectUri: 'http://localhost:5000',//'https://qikforce.herokuapp.com',//oauthCallbackUrl(req),
     mode: 'multi'
 });
 
@@ -116,6 +116,33 @@ app.post('/getdashboards', function (req, res) {
         }
     });
 });
+
+app.post('/getdashboardmetadata', function (req, res) {
+    org.getUrl({
+        url: req.body.url,
+        oauth: oauth
+    }, function (err, response) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(response);
+        }
+    });
+});
+
+app.get('/getallsobjects', function (req, res) {
+    org.getUrl({
+        url: '/services/data/v42.0/sobjects',
+        oauth: oauth
+    }, function (err, response) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(response);
+        }
+    });
+});
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
