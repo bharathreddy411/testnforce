@@ -1,6 +1,6 @@
-$(document).ready(function(){
-	
-	"use strict";
+$(document).ready(function () {
+
+    "use strict";
 
     $(document).ajaxStart(function () {
         $('#loader').show();
@@ -9,19 +9,33 @@ $(document).ready(function(){
     }).ajaxError(function () {
         $('#loader').hide();
     });
-	
-	var salesforcehome = {
-		folders : {},
-		dashboards : [],
-		home: true
-	}
-	
-	function getfolders(selectedOrg){
-		$.ajax({
-			url: "/getfolders"
-		}).done(function( response ) {
-			//console.log(data);
-			let folders = response.folders;
+
+    function salesforce() {
+        var self = this;
+        self.orgname;
+        self.home = false;
+        self.loggedIn = false;
+        self.session = '';
+        self.folders = {};
+        self.dashboards = [];
+        self.dashboardsMetaData = {};
+        self.namespaceprefix = '';
+        self.datasets = {};
+        self.images = [];
+        self.userId;
+        self.sobjects = [];
+        self.dataflows = [];
+    }
+
+    // Create new instance of salesforce for current org
+    var salesforcehome = new salesforce();
+    salesforcehome.home = true;
+
+    function getfolders(selectedOrg) {
+        $.ajax({
+            url: "/getfolders"
+        }).done(function (response) {
+            let folders = response.folders;
             let folLen = response.folders.length;
             for (let i = 0; i < folLen; i++) {
                 let folder = folders[i];
@@ -44,23 +58,23 @@ $(document).ready(function(){
                     $('#sfAppsList').append(newRow);
                 }
             }
-			getdashboards(salesforcehome,'/services/data/v42.0/wave/dashboards');
-		}).fail(function(err){
-			console.log(err)
-		});
-	}
-	getfolders(salesforcehome);
-	
-	function getdashboards(selectedOrg,url){
-		let postdata = {};
-		postdata['url'] = url
-		$.ajax({
-			url: "/getdashboards",
-			type: 'post',
-			data: postdata,
-			dataType: 'json'
-		}).done(function( response ) {
-			let len = response.dashboards.length;
+            getdashboards(salesforcehome, '/services/data/v42.0/wave/dashboards');
+        }).fail(function (err) {
+            console.log(err)
+        });
+    }
+    getfolders(salesforcehome);
+
+    function getdashboards(selectedOrg, url) {
+        let postdata = {};
+        postdata['url'] = url
+        $.ajax({
+            url: "/getdashboards",
+            type: 'post',
+            data: postdata,
+            dataType: 'json'
+        }).done(function (response) {
+            let len = response.dashboards.length;
             if (len > 0) {
                 for (let i = 0; i < len; i++) {
                     let folder = response.dashboards[i].folder;
@@ -75,7 +89,7 @@ $(document).ready(function(){
                         selectedOrg['folders'][fid]['isSelected'] = false;
                         if (selectedOrg['home'] === true) {
                             let existingrowscount = $('#sfAppsList').find('a[folderid="' + fid + '"]');
-                            if(existingrowscount.length === 0){
+                            if (existingrowscount.length === 0) {
                                 let newRow = '<a class="dimension" folderid="' + fid + '">';
                                 newRow += '<img style="cursor:pointer;position:relative; z-index:2;margin-left:10px" src="images/analyticscc__DimensionLabel.png" width="15px" height="10px"/>';
                                 newRow += '<label data-tooltip-on-truncation="true">' + folder.label + '</label>';
@@ -83,7 +97,7 @@ $(document).ready(function(){
                                 newRow += '<img src="images/chevronright_60.png" width="15px" height="10px"/>';
                                 newRow += '</span></a>';
                                 $('#sfAppsList').append(newRow);
-                            }                            
+                            }
                         }
                     }
                     selectedOrg['dashboards'].push(response.dashboards[i]);
@@ -95,13 +109,12 @@ $(document).ready(function(){
             if (response.nextPageUrl != null) {
                 getdashboards(selectedOrg, response.nextPageUrl)
             }
-		}).fail(function(err){
-			console.log(err)
-		});
-	}
-	
-	
-	// Click action for Application list to show dashboards list.
+        }).fail(function (err) {
+            console.log(err)
+        });
+    }
+
+    // Click action for Application list to show dashboards list.
     $('#sfAppsList').on('click', 'a', function () {
         $('#page1').find('.sfDashboardsList .myInput').val('');
 
@@ -118,9 +131,9 @@ $(document).ready(function(){
             }
         }
     });
-	
-	
-	 // Function to append dashboards to Dashboards list.
+
+
+    // Function to append dashboards to Dashboards list.
     function appendDashboardsToDashboardsList(dashboard) {
         let newRow = '';
         newRow += '<a class="dimension" dashboardid="' + dashboard.id + '" folderid="' + dashboard.folder.id + '">'
@@ -193,27 +206,33 @@ $(document).ready(function(){
     $('.sfSelectedDashboardsList').on('click', '#sfDeSelectAllDashboards', function () {
         $('#sfSelectedDashboardsList').find('a').click();
     });
-	
-	
-	function getnamespace(){
-		$.ajax({
-			url: "/getnamespace"
-		}).done(function( data ) {
-			console.log(data);
-		}).fail(function(err){
-			console.log(err)
-		});
-	}
-	getnamespace();
-	
-	$('#button').on('click', function(){
-		$.ajax({
-			url: "/anotherorg"
-		}).done(function( data ) {
-			console.log(data);
-		}).fail(function(err){
-			console.log(err)
-		});
-	});
-	
+
+
+    function getnamespaceprefix(selectedOrg) {
+        $.ajax({
+            url: "/getnamespace"
+        }).done(function (response) {
+            if (response.records[0].NamespacePrefix) {
+                selectedOrg['namespaceprefix'] = response.records[0].NamespacePrefix + "__";
+                /*if (selectedOrg['home'] === true) {
+                    packageNameSpacePrefix = response.records[0].NamespacePrefix + "__";
+                }*/
+            }
+        }).fail(function (err) {
+            console.log(err)
+        });
+    }
+    getnamespaceprefix(salesforcehome);
+
+    $('#button').on('click', function () {
+        $.ajax({
+            url: "/anotherorg"
+        }).done(function (data) {
+            console.log(data);
+        }).fail(function (err) {
+            console.log(err)
+        });
+    });
+
+
 });
