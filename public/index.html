@@ -15,7 +15,7 @@
 </head>
 
 <body class="slds-scope">
-    <!--<button id="button">login to another org</button>-->
+
     <div class="slds" style="border: 1px solid lightgrey;width:95%;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;height:calc(100% - 44px);">
         <div class="myapp slds-no-flex" style="background-color: white;height:100%">
             <div class="slds-page-header" style="border-bottom: 1px solid #d8dde6;background:none;padding: 11px 11px 12px;">
@@ -65,6 +65,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="slds-col slds-no-flex page1" id="page1" style="height:calc(100% - 60px)">
                 <div class="slds-grid slds-m-top--large" id="salesforce" style="margin-top:0px;height:100%;padding-top:10px;padding-bottom:6px">
                     <!--SF Applications list  slds-size--2-of-6 box-sizing:initial;-->
@@ -215,6 +216,256 @@
                     </div>
                 </div>
             </div>
+
+            <div class="slds-col slds-no-flex page2" id="page2" style="height:calc(100% - 60px);display:none;">
+                <div class="slds-grid slds-m-top--large" id="page2Grid" style="margin-top:0px;height:100%;padding-top:10px;padding-bottom:6px">
+                    <!--Accordion  slds-size--2-of-6 box-sizing:initial;-->
+                    <div class="slds-col slds-p-horizontal_medium slds-size_3-of-6" style="height:100%;">
+                        <div class="slds-card slds-scrollable" style="background:white;border-bottom: 1px solid #d8dde6;height:100%">
+                            <ul class="slds-accordion">
+                                <li class="slds-accordion__list-item" id="dashboardsAccitem">
+                                    <section class="slds-accordion__section" style="padding:0">
+                                        <div class="slds-accordion__summary" style="background-color: #2EC2BA;cursor: pointer;margin-bottom:0">
+                                            <p aria-expanded="false" class="slds-accordion__summary-action" style="padding: 10px;">
+                                                <img class="accordionicon_inverse" style="height:20px;width:20px;background-color:#2EC2BA;" src="images/Touch_Backup__ArrowDown2.gif"
+                                                    id="ArrowDown" />
+                                                <span class="slds-truncate" title="Accordion summary"> Dashboards</span>
+                                            </p>
+                                        </div>
+                                        <div aria-hidden="true" class="slds-accordion__content" id="accordion-details-01" style="display:none">
+                                            <div class="slds-scrollable" style="max-height:230px">
+                                                <table class="slds-table slds-table--fixed-layout">
+                                                    <thead>
+                                                        <tr class="">
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Dashboard">Dashboard</div>
+                                                            </th>
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Application">Application</div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="names selectors">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </li>
+                                <li class="slds-accordion__list-item" id="datasetsAccitem">
+                                    <section class="slds-accordion__section" style="padding:0">
+                                        <div class="slds-accordion__summary" style="background-color: #2EC2BA;cursor: pointer;margin-bottom:0">
+                                            <p aria-expanded="false" class="slds-accordion__summary-action" style="padding: 10px;">
+                                                <img class="accordionicon_inverse" style="height:20px;width:20px;background-color:#2EC2BA;" src="images/Touch_Backup__ArrowDown2.gif"
+                                                    id="ArrowDown" />
+                                                <span class="slds-truncate" title="Accordion summary"> Datasets</span>
+                                            </p>
+                                        </div>
+                                        <div aria-hidden="true" class="slds-accordion__content" id="accordion-details-02" style="display:none">
+                                            <div class="slds-scrollable" style="max-height:230px">
+                                                <table class="slds-table slds-table--fixed-layout">
+                                                    <thead>
+                                                        <tr class="">
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Dataset">Dataset</div>
+                                                            </th>
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Application">Application</div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="names selectors">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </li>
+                                <li class="slds-accordion__list-item" id="linksAccitem" style="display:none">
+                                    <section class="slds-accordion__section" style="padding:0">
+                                        <div class="slds-accordion__summary" style="background-color: #2EC2BA;cursor: pointer;margin-bottom:0">
+                                            <p aria-expanded="false" class="slds-accordion__summary-action" style="padding: 10px;">
+                                                <img class="accordionicon_inverse" style="height:20px;width:20px;background-color:#2EC2BA;" src="images/Touch_Backup__ArrowDown2.gif"
+                                                    id="ArrowDown" />
+                                                <span class="slds-truncate" title="Accordion summary"> Links</span>
+                                            </p>
+                                        </div>
+                                        <div aria-hidden="true" class="slds-accordion__content" id="accordion-details-03" style="display:none">
+                                            <div class="slds-scrollable" style="max-height:230px">
+                                                <table class="slds-table slds-table--fixed-layout">
+                                                    <thead>
+                                                        <tr class="">
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Link">Link</div>
+                                                            </th>
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Application">
+                                                                    Application
+                                                                    <div style='float:right;margin-top:-1px'>
+                                                                        <button class="slds-button slds-button--neutral" id="selectAllLinks" style="height: 20px;line-height: 0;padding: 0 7px 0 7px;background: white;color: rgb(77, 77, 77);">
+                                                                            Select All
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="names selectors">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </li>
+                                <li class="slds-accordion__list-item" id="imagesAccitem" style="display:none">
+                                    <section class="slds-accordion__section" style="padding:0">
+                                        <div class="slds-accordion__summary" style="background-color: #2EC2BA;cursor: pointer;margin-bottom:0">
+                                            <p aria-expanded="false" class="slds-accordion__summary-action" style="padding: 10px;">
+                                                <img class="accordionicon_inverse" style="height:20px;width:20px;background-color:#2EC2BA;" src="images/Touch_Backup__ArrowDown2.gif"
+                                                    id="ArrowDown" />
+                                                <span class="slds-truncate" title="Accordion summary"> Images</span>
+                                            </p>
+                                        </div>
+                                        <div aria-hidden="true" class="slds-accordion__content" id="accordion-details-03" style="display:none">
+                                            <div class="slds-scrollable" style="max-height:230px">
+                                                <table class="slds-table slds-table--fixed-layout">
+                                                    <thead>
+                                                        <tr class="">
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Image">Image</div>
+                                                            </th>
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Target Image">
+                                                                    Target Image
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="names selectors">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </li>
+                                <li class="slds-accordion__list-item" id="dataflowsAccitem" style="display:none">
+                                    <section class="slds-accordion__section" style="padding:0">
+                                        <div class="slds-accordion__summary" style="background-color: #2EC2BA;cursor: pointer;margin-bottom:0">
+                                            <p aria-expanded="false" class="slds-accordion__summary-action" style="padding: 10px;">
+                                                <img class="accordionicon_inverse" style="height:20px;width:20px;background-color:#2EC2BA;" src="images/Touch_Backup__ArrowDown2.gif"
+                                                    id="ArrowDown" />
+                                                <span class="slds-truncate" title="Accordion summary"> DataFlows</span>
+                                            </p>
+                                        </div>
+                                        <div aria-hidden="true" class="slds-accordion__content" id="accordion-details-03" style="display:none">
+                                            <div class="slds-scrollable" style="max-height:230px">
+                                                <table class="slds-table slds-table--fixed-layout">
+                                                    <thead>
+                                                        <tr class="">
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Dataflow">Dataflow</div>
+                                                            </th>
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Select source dataflow">
+                                                                    Source
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="names selectors">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </li>
+                                <li class="slds-accordion__list-item" id="uploadDataflowsTargetAccitem" style="display:none">
+                                    <section class="slds-accordion__section" style="padding:0">
+                                        <div class="slds-accordion__summary" style="background-color: #2EC2BA;cursor: pointer;margin-bottom:0">
+                                            <p aria-expanded="false" class="slds-accordion__summary-action" style="padding: 10px;">
+                                                <img class="accordionicon_inverse" style="height:20px;width:20px;background-color:#2EC2BA;" src="images/Touch_Backup__ArrowDown2.gif"
+                                                    id="ArrowDown" />
+                                                <span class="slds-truncate" title="Accordion summary"> DataFlows</span>
+                                            </p>
+                                        </div>
+                                        <div aria-hidden="true" class="slds-accordion__content" id="accordion-details-03" style="display:none">
+                                            <div class="slds-scrollable" style="max-height:230px">
+                                                <table class="slds-table slds-table--fixed-layout">
+                                                    <thead>
+                                                        <tr class="">
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Dataflow">Dataflow</div>
+                                                            </th>
+                                                            <th style="padding:0">
+                                                                <div class="listheader" title="Select target dataflow">
+                                                                    Target
+                                                                </div>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="names selectors">
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--SF Select Destination Application list slds-size--2-of-6-->
+                    <div class="slds-col slds-p-horizontal_medium slds-size_3-of-6 sfSelectDestAppList" style="height:100%;">
+                        <div class="slds-card" style="background:white;border-bottom: 1px solid #d8dde6;height:100%">
+                            <section class="slds-card__body" style="height:300px;padding:0px;margin:0;height:100%">
+                                <div class="slds-scrollable" style="height:100%">
+                                    <div class="search dimsearch">
+                                        <input class="myInput" placeholder="Search..." type="text" />
+                                        <span class="searchhint resnum"></span>
+                                    </div>
+                                    <div class="names selectors" style="height:calc(100% - 37px);">
+                                        <div class="listheader squeezed"></div>
+                                        <div class="listheader">Applications</div>
+                                        <div id="sfSelectDestAppList">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <!--Github Select Destination Folder list-->
+                    <div class="slds-col slds-p-horizontal_medium slds-size_3-of-6 gitSelectDestFolderList" style="height:100%;display:none">
+                        <nav role="navigation" aria-label="Breadcrumbs" style="width: fit-content;margin:0px auto 2px auto;">
+                            <ol class="slds-breadcrumb slds-list_horizontal slds-wrap" id="selectedGitDestFolderNav">
+                            </ol>
+                        </nav>
+                        <div class="slds-card" style="background:white;border-bottom: 1px solid #d8dde6;height:calc(100% - 19px)">
+                            <section class="slds-card__body" style="height:300px;padding:0px;margin:0;height:100%">
+                                <div class="slds-scrollable" style="height:100%">
+                                    <div class="search dimsearch">
+                                        <input class="myInput" placeholder="Search..." type="text" />
+                                        <span class="searchhint resnum"></span>
+                                    </div>
+                                    <div class="names selectors" style="height:calc(100% - 37px);">
+                                        <div class="listheader squeezed"></div>
+                                        <div class="listheader">Folders</div>
+                                        <div id="gitSelectDestFolderList">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div id="loader" style="display:none">
                 <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.25; z-index: 10000; background-color: black;"></div>
                 <center>
@@ -264,6 +515,98 @@
                     <div class="slds-modal__footer">
                         <button class="slds-button slds-button--neutral" id="closeGitLoginModal">Cancel</button>
                         <button class="slds-button slds-button--neutral slds-button--brand" id="loginToGithub">Go</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-modal" aria-hidden="false" role="dialog" id="saveConfigurationModal">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">Save Configuration</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <form name="saveConfigurationModalForm" id="saveConfigurationModalForm">
+                            <div class="errorMessages" style="text-align:center;color:#c23934"></div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="configname">Config Name
+                                    <span class="slds-required" title="required">*</span>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input id="configname" class="slds-input" type="text" placeholder="Config Name" required="required" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" id="closeSaveConfigurationModal">Cancel</button>
+                        <button class="slds-button slds-button--neutral slds-button--brand" id="saveConfigurationBtn">Save</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-modal" aria-hidden="false" role="dialog" id="selectConfigurationModal">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">Select Configuration</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <form name="selectConfigurationModalForm" id="selectConfigurationModalForm">
+                            <div class="errorMessages" style="text-align:center;color:#c23934"></div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="select-01">Select</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <select class="slds-select" id="selectConfigurationdd">
+                                            <!--<option value="">Please select</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" id="closeSelectConfigurationModal">Cancel</button>
+                        <button class="slds-button slds-button--neutral slds-button--brand" id="selectConfigurationBtn">Select</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-modal" aria-hidden="false" role="dialog" id="gitCommitMessageModal">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">Git Commit</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <form name="gitCommitMessageModalForm" id="gitCommitMessageModalForm">
+                            <div class="errorMessages" style="text-align:center;color:#c23934"></div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="commitMessage">Commit Message
+                                    <span class="slds-required" title="required">*</span>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input id="commitMessage" class="slds-input" type="text" placeholder="Enter your message" required="required" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" id="closeGitCommitMessageModal">Cancel</button>
+                        <button class="slds-button slds-button--neutral slds-button--brand" id="gitCommitMessageModalBtn">Commit</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slds-modal" aria-hidden="false" role="dialog" id="confirmSaveConfigModal">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">Save Configuration</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <p>Would You like to save configuration ?</p>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" id="closeConfirmSaveConfigModal">No</button>
+                        <button class="slds-button slds-button--neutral slds-button--brand" id="confirmSaveConfigModalBtn">Yes</button>
                     </div>
                 </div>
             </div>
@@ -322,6 +665,59 @@
                 </div>
             </div>
 
+            <div class="slds-modal" aria-hidden="false" role="dialog" id="salesforceLoginModal">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 class="slds-text-heading--medium">Salesforce Login</h2>
+                    </div>
+                    <div class="slds-modal__content slds-p-around--medium">
+                        <form name="salesforceLoginForm" id="salesforceLoginForm">
+                            <div class="errorMessages" style="text-align:center;color:#c23934"></div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="salesforceUsername">UserName
+                                    <span class="slds-required" title="required">*</span>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input id="salesforceusername" class="slds-input" type="text" placeholder="Username" required="required" />
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="salesforcePassword">Password
+                                    <span class="slds-required" title="required">*</span>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input id="salesforcepassword" class="slds-input" type="password" placeholder="Password with Secret Key" required="required"
+                                    />
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="salesforceSecretKey">Secret Key
+                                    <span class="slds-required" title="required">*</span>
+                                </label>
+                                <div class="slds-form-element__control">
+                                    <input id="salesforceSecretKey" class="slds-input" type="password" placeholder="Secret Key" required="required" />
+                                </div>
+                            </div>
+                            <div class="slds-form-element">
+                                <label class="slds-form-element__label" for="salesforceEnvironment">Environment</label>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-select_container">
+                                        <select class="slds-select" id="salesforceEnvironment">
+                                            <option value="production">Production</option>
+                                            <option value="sandbox">Sandbox</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="slds-modal__footer">
+                        <button class="slds-button slds-button--neutral" id="closeSalesforceLoginModal">Cancel</button>
+                        <button class="slds-button slds-button--neutral slds-button--brand" id="loginToSalesforce">Go</button>
+                    </div>
+                </div>
+            </div>
+
             <div id="errorpopup" style="display:none">
                 <section role="alertdialog" tabindex="-1" aria-labelledby="prompt-heading-id" aria-describedby="prompt-message-wrapper" class="slds-modal slds-fade-in-open slds-modal_prompt"
                     aria-modal="true">
@@ -341,8 +737,10 @@
             </div>
 
             <div class="slds-backdrop" id="backdrop"></div>
+
         </div>
     </div>
+
     <script src="assets/jquery-1.12.4.min.js"></script>
     <script src="assets/jszip.min.js"></script>
     <script src="assets/FileSaver.min.js"></script>
