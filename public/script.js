@@ -2279,18 +2279,36 @@ $(document).ready(function () {
         let downloadedDataflows = {};
         for (let dset in mappedDataFlows) {
             let obj = salesforcehome['dataflows'].find(o => o.id === mappedDataFlows[dset]['source']);
-            //console.log(obj);
-            let get = fetchDataFromSf(salesforcehome, 'insights/internal_api/v1.0/esObject/workflow/' + obj['id'] + '/json');
+            let get =  downloaddataflow( obj['id']);
             get.done(function (response) {
                 downloadedDataflows[obj.id] = response['result'];
             });
             allPromises.push(get);
+            //console.log(obj);
+            /*let get = fetchDataFromSf(salesforcehome, 'insights/internal_api/v1.0/esObject/workflow/' + obj['id'] + '/json');
+            get.done(function (response) {
+                downloadedDataflows[obj.id] = response['result'];
+            });
+            allPromises.push(get);*/
         }
         $.when.apply(null, allPromises).done(function () {
             //console.log(downloadedDataflows);
             uploadDataflowsFromSFtoAnotherSF(downloadedDataflows, selectedOrg);
         });
     }
+    function downloaddataflow(id){
+        let postdata = {};
+        postdata.dataflowid = id;
+        return  $.ajax({
+            dataType: 'json',
+            url: '/downloaddataflows',
+            type: 'POST',
+            data: postdata
+        }).fail(function () {
+            console.log("error");
+        });
+    }
+
     function uploadDataflowsFromSFtoAnotherSF(downloadedDataflows, selectedOrg) {
         let allPromises = [];
         for (let dset in mappedDataFlows) {
@@ -3428,7 +3446,14 @@ $(document).ready(function () {
         for (let dset in mappedDataFlows) {
             let obj = salesforcehome['dataflows'].find(o => o.id === mappedDataFlows[dset]['source']);
             //console.log(obj);
-            let get = fetchDataFromSf(salesforcehome, 'insights/internal_api/v1.0/esObject/workflow/' + obj['id'] + '/json');
+            /*let get = fetchDataFromSf(salesforcehome, 'insights/internal_api/v1.0/esObject/workflow/' + obj['id'] + '/json');
+            get.done(function (response) {
+                for (let i = 0; i < response['result'].length; i++) {
+                    dataflowsfolder.file(obj.label + ".json", JSON.stringify(response['result'][i]['workflowDefinition'], null, 2));
+                }
+            });
+            allPromises.push(get);*/
+            let get =  downloaddataflow(obj['id']);
             get.done(function (response) {
                 for (let i = 0; i < response['result'].length; i++) {
                     dataflowsfolder.file(obj.label + ".json", JSON.stringify(response['result'][i]['workflowDefinition'], null, 2));

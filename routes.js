@@ -171,6 +171,19 @@ module.exports = function (app, express) {
         });
     });
 
+    app.post('/downloaddataflows', function (req, res) {
+        org.getUrl({
+            url: '/insights/internal_api/v1.0/esObject/workflow/' + req.body.dataflowid + '/json',
+            oauth: oauth
+        }, function (err, response) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.send(response);
+            }
+        });
+    });
+
     app.get('/checkiftouchpermissionsetexists', function (req, res) {
         org.getUrl({
             url: baseurl + "/query/?q=SELECT+Id,Name+FROM+PermissionSet+WHERE+Name+=+'Admin_Permission_Sets'",
